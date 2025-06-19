@@ -1,25 +1,34 @@
 import java.util.Scanner;
 
 public class Program9 {
-    //Proram to check is an panagram (its a sentence contaning all the aphabets)
+    // Program to check if a string is a pangram (a sentence containing all the alphabets)
     public static void main(String[] args) {
-        Scanner sc  =new Scanner(System.in);
-        System.out.println("Enter the string to check panagram");
-        char[] a= sc.nextLine().toCharArray();
-        int i,j,k;
-        int count=0;
-        for ( i = 65,j=97; i<=90 ; i++,j++) {
-            for ( k = 0; k <a.length ; k++) {
-                if( i==a[k] || j==a[k]){
+        // Create Scanner object to take user input
+        Scanner sc  = new Scanner(System.in);
+        System.out.println("Enter the string to check pangram");
+
+        // Convert the input string to a character array
+        char[] a = sc.nextLine().toCharArray();
+
+        int i, j, k;
+        int count = 0;
+
+        // Loop through ASCII values of A-Z and a-z
+        for (i = 65, j = 97; i <= 90; i++, j++) {
+            for (k = 0; k < a.length; k++) {
+                // If character matches uppercase or lowercase alphabet
+                if (i == a[k] || j == a[k]) {
                     count++;
+                    break; // Avoid counting duplicates
                 }
             }
         }
-        if (count==26){
-            System.out.println("Its an panagram");
-        }
-        else {
-            System.out.println("Its not an panagram ");
+
+        // Check if all 26 alphabets are present
+        if (count == 26) {
+            System.out.println("It's a pangram");
+        } else {
+            System.out.println("It's not a pangram");
         }
     }
 }
